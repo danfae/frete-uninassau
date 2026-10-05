@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f5f6f2" />
+    <meta name="description" content="Consulte um CEP e estime o frete de moto pela distância entre as unidades UNINASSAU de Fortaleza e o destino." />
+    <title>Frete Nassau — estimativa de entrega</title>
+    <link rel="preconnect" href="https://brasilapi.com.br" />
+    <link rel="preconnect" href="https://router.project-osrm.org" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#inicio" aria-label="Frete Nassau, início">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 40 40" fill="none">
+            <path d="M10 25.5h3.2l3.4-9h7l3.5 9H30" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+            <circle cx="10" cy="27" r="4.3" stroke="currentColor" stroke-width="2.4" />
+            <circle cx="30" cy="27" r="4.3" stroke="currentColor" stroke-width="2.4" />
+            <path d="M20.1 12.5h4.1M18 18.5h6.3" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" />
+          </svg>
+        </span>
+        <span class="brand-name">nassau<span>frete</span></span>
+      </a>
+      <div class="topbar-meta"><span class="pulse-dot"></span> Fortaleza, CE <span class="meta-divider">/</span> Cotação de entrega</div>
+    </header>
+
+    <main id="inicio" class="page-shell">
+      <section class="intro" aria-labelledby="hero-title">
+        <div class="eyebrow"><span class="eyebrow-line"></span> ENTREGA RÁPIDA, CONTA CLARA</div>
+        <h1 id="hero-title">Do campus até<br />a sua <span>porta.</span></h1>
+        <p class="intro-copy">Consulte o CEP, veja a distância por rota e tenha uma estimativa do frete de moto em segundos.</p>
+
+        <div class="feature-list" aria-label="Como funciona">
+          <div class="feature-item">
+            <span class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M12 21s7-5.2 7-11a7 7 0 1 0-14 0c0 5.8 7 11 7 11Z" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="10" r="2.4" stroke="currentColor" stroke-width="1.7"/></svg>
+            </span>
+            <span><strong>CEP conferido</strong><small>Endereço preenchido automaticamente</small></span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-icon feature-icon-lime" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M4 17.5h3.5l2.2-8h5.1l2.3 8H20" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><circle cx="5.5" cy="18" r="2.2" stroke="currentColor" stroke-width="1.7"/><circle cx="18.5" cy="18" r="2.2" stroke="currentColor" stroke-width="1.7"/><path d="m10.2 13.3 3.1 2.1 2.2-2.1M11 6.8h3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+            </span>
+            <span><strong>Rota por vias</strong><small>Distância estimada com dados do OpenStreetMap</small></span>
+          </div>
+        </div>
+
+        <div class="campus-note">
+          <span class="campus-note-mark" aria-hidden="true">N</span>
+          <span><small>ORIGEM DA ENTREGA</small><strong>UNINASSAU Fortaleza</strong></span>
+          <span class="campus-note-pin" aria-hidden="true">
+            <svg viewBox="0 0 20 20" fill="none"><path d="M10 17s5.5-4.1 5.5-9.1a5.5 5.5 0 1 0-11 0C4.5 12.9 10 17 10 17Z" stroke="currentColor" stroke-width="1.5"/><circle cx="10" cy="7.8" r="1.7" stroke="currentColor" stroke-width="1.5"/></svg>
+          </span>
+        </div>
+      </section>
+
+      <section class="quote-panel" aria-labelledby="form-title">
+        <div class="panel-topline"><span class="panel-kicker">SIMULADOR DE FRETE</span><span class="panel-step"><span class="step-dot"></span> 01 <span class="step-slash">/</span> 01</span></div>
+        <div class="panel-heading">
+          <div>
+            <h2 id="form-title">Calcule seu frete</h2>
+            <p>Escolha a unidade e informe o CEP de destino.</p>
+          </div>
+          <span class="heading-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M5 19 19 5M8 5h11v11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </div>
+
+        <form id="quote-form" novalidate>
+          <label class="field-label" for="campus">UNIDADE DE ORIGEM</label>
+          <div class="select-wrap">
+            <select id="campus" name="campus">
+              <option value="aguanambi">UNINASSAU Aguanambi · José Bonifácio</option>
+              <option value="parangaba">UNINASSAU Parangaba</option>
+            </select>
+            <svg class="select-chevron" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m5 7.5 5 5 5-5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+
+          <label class="field-label cep-label" for="cep">CEP DE DESTINO</label>
+          <div class="cep-row">
+            <div class="input-wrap">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3.5 7.5h17v12h-17zM7 7.5V5h10v2.5M7.5 12h3m2.5 0h3.5M7.5 15.5h3m2.5 0h3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <input id="cep" name="cep" type="text" inputmode="numeric" autocomplete="postal-code" placeholder="00000-000" maxlength="9" aria-describedby="cep-help form-message" required />
+            </div>
+            <button class="submit-button" id="submit-button" type="submit">
+              <span class="button-label">Calcular</span>
+              <span class="button-spinner" aria-hidden="true"></span>
+              <svg class="button-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11m-4-4 4 4-4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+          <p id="cep-help" class="field-hint">Digite os 8 números do CEP brasileiro.</p>
+          <p id="form-message" class="form-message" role="status" aria-live="polite"></p>
+
+          <details class="rate-settings" open>
+            <summary><span class="settings-summary-left"><span class="settings-icon" aria-hidden="true">
+              <svg viewBox="0 0 20 20" fill="none"><path d="M3 6h14M3 10h14M3 14h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="7" cy="6" r="1.5" fill="#fff" stroke="currentColor" stroke-width="1.5"/><circle cx="12.5" cy="10" r="1.5" fill="#fff" stroke="currentColor" stroke-width="1.5"/><circle cx="8.5" cy="14" r="1.5" fill="#fff" stroke="currentColor" stroke-width="1.5"/></svg>
+            </span><span><strong>Parâmetros da estimativa</strong><small>Personalize sua tarifa de referência</small></span></span><span class="settings-toggle">−</span></summary>
+            <div class="rate-fields">
+              <div class="rate-field"><label for="base-rate">TAXA BASE</label><div class="money-input"><span>R$</span><input id="base-rate" type="number" min="0" max="1000" step="0.50" value="0" inputmode="decimal" aria-label="Taxa base em reais" /></div></div>
+              <div class="rate-field"><label for="km-rate">VALOR POR KM</label><div class="money-input"><span>R$</span><input id="km-rate" type="number" min="0" max="1000" step="0.10" value="2.50" inputmode="decimal" aria-label="Valor por quilômetro em reais" /></div></div>
+            </div>
+            <p class="rate-note">Ajuste os valores para sua referência. Eles ficam salvos neste dispositivo.</p>
+          </details>
+        </form>
+
+        <section class="result-card" id="result-card" aria-live="polite" hidden>
+          <div class="result-divider"><span>RESULTADO DA ROTA</span><i></i></div>
+          <div class="destination-row">
+            <span class="route-markers" aria-hidden="true"><i></i><b></b><i class="marker-end"></i></span>
+            <div class="route-labels"><span id="origin-label">UNINASSAU Aguanambi</span><strong id="destination-label">Destino</strong><small id="address-label"></small></div>
+            <span class="distance-pill" id="distance-label">— km</span>
+          </div>
+          <div class="price-panel">
+            <div><span class="price-caption">FRETE ESTIMADO</span><strong class="price-value" id="price-label">R$ 0,00</strong><small id="price-formula">Taxa base + distância × valor por km</small></div>
+            <span class="price-check" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="m6 12.5 4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </div>
+          <a id="maps-link" class="maps-link" href="#" target="_blank" rel="noopener noreferrer">Abrir rota no Google Maps <span aria-hidden="true">↗</span></a>
+        </section>
+
+        <p class="disclaimer"><span class="info-icon" aria-hidden="true">i</span><span>Estimativa de frete calculada pela distância. Não é uma cotação oficial da Uber: o preço do Uber Moto varia e pode ser consultado no <a href="https://m.uber.com/" target="_blank" rel="noopener noreferrer">app da Uber</a>.</span></p>
+      </section>
+
+      <div class="decorative-orbit orbit-one" aria-hidden="true"></div>
+      <div class="decorative-orbit orbit-two" aria-hidden="true"></div>
+    </main>
+
+    <footer class="footer">
+      <span>Feito para facilitar cada entrega.</span>
+      <span>Dados de CEP: <a href="https://brasilapi.com.br/docs#tag/CEP-V2" target="_blank" rel="noopener noreferrer">BrasilAPI</a> <i>·</i> Rotas: <a href="https://project-osrm.org/" target="_blank" rel="noopener noreferrer">OSRM / OpenStreetMap</a></span>
+    </footer>
+  </body>
+</html>
+
