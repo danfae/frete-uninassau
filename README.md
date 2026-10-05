@@ -2,6 +2,8 @@
 
 Site estático para consultar CEPs brasileiros e estimar o frete de moto a partir de uma unidade da UNINASSAU em Fortaleza.
 
+**Demonstração:** https://danfae.github.io/frete-uninassau/
+
 ## Como funciona
 
 1. O site consulta o CEP na [BrasilAPI CEP v2](https://brasilapi.com.br/docs#tag/CEP-V2), com fallback para a [ViaCEP](https://viacep.com.br/).
